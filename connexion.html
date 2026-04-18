@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Connexion</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header id="header">
+      <h2 class="logo">LUXURY CARS</h2>
+
+      <nav>
+        <ul class="navbar">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="#">Marques</a></li>
+          <li><a href="#feature">Voitures</a></li>
+          <li><a href="#">reservation</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="connexion.html" class="login-btn">Connexion</a>
+    </header>
+    <video autoplay muted loop id="video1">
+      <source src="video/1.mp4" type="video/mp4" />
+    </video>
+    <!--wrapped-->
+    <div class="wrapped-body">
+      <form action="#" id="register-form" class="wrapped">
+        <h1>login</h1>
+
+        <div class="info-box">
+          <input
+            type="text"
+            name="username"
+            placeholder="username/email"
+            required
+          />
+          <i class="bx bxs-user"></i>
+        </div>
+        <div class="info-box">
+          <input
+            type="password"
+            name="password"
+            minlength="8"
+            placeholder="mot de passe"
+            required
+          />
+          <i class="bx bxs-lock-alt"></i>
+        </div>
+        <div class="remember">
+          <label><input type="checkbox" /> se rappeler de moi </label>
+          <a href="#"> mot de passe oublié ?</a>
+        </div>
+        <div class="connexion-btn">
+          <button type="submit">login</button>
+        </div>
+        <div class="or-divider">OU</div>
+        <div class="register">
+          <p>
+            vous n'avez pas un compte ?
+            <a href="inscription.html"> s'inscrire</a>
+          </p>
+        </div>
+        <div class="social">
+          <a href=""><i class="bx bxl-google"></i></a>
+          <a href=""><i class="bx bxl-facebook-circle"></i></a>
+          <a href=""><i class="bx bxl-github"></i></a>
+          <a href=""><i class="bx bxl-linkedin"></i></a>
+        </div>
+      </form>
+    </div>
+    <script src="javascript/auth.js"></script>
+  </body>
+</html>
