@@ -1700,4 +1700,38 @@ body {
   .footer-box h3 {
     font-size: 15px;
   }
+.acheter-main {
+    padding: 0 12px;
+    box-sizing: border-box;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .acheter-box {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .basket-box,
+  .payment-card {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 18px 14px;
+    margin: 0;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .form-group input,
+  .form-group select {
+    font-size: 13px;
+    padding: 9px 10px;
+  }
+
+  .credit-card img {
+    height: 120px;
+  }
 }
