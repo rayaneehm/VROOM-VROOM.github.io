@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Acheter | VROOM VROOM</title>
+    <link rel="stylesheet" href="../style/style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="pages-body">
+    <div>
+      <header id="header">
+        <h2 class="logo">VROOM<span> VROOM </span></h2>
+        <nav>
+          <ul class="navbar">
+            <li>
+              <a href="../index.html"><i class="bx bx-home"></i> Accueil</a>
+            </li>
+            <li>
+              <a href="marques.html"><i class="bx bx-award"></i> Marques</a>
+            </li>
+            <li>
+              <a href="voitures.html"><i class="bx bx-car"></i> Voitures</a>
+            </li>
+            <li>
+              <a class="active" href="acheter.html"
+                ><i class="bx bx-credit-card"></i> Acheter</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <a href="#" class="basket"><i class="bx bx-basket"></i></a>
+        <a href="#" class="menu"><i class="bx bx-menu"></i></a>
+        <a href="connexion.html" class="login-btn" id="account-btn"
+          >Connexion</a
+        >
+      </header>
+    </div>
+
+    <main class="acheter-main">
+      <h1 class="acheter-titre">Finaliser votre <span>achat</span></h1>
+      <p class="acheter-txt">
+        Vérifiez votre commande et renseignez vos informations de paiement
+      </p>
+
+      <div class="acheter-box">
+        <div class="basket-box">
+          <h3><i class="bx bx-basket"></i> Récapitulatif de commande</h3>
+          <div id="recap-liste"></div>
+          <div class="recap-total" id="recap-total-wrapper">
+            <span>Total à payer</span>
+            <span class="recap-total-montant"
+              ><em id="recap-total-montant">0</em> $</span
+            >
+          </div>
+        </div>
+
+        <div class="payment-card">
+          <h3><i class="bx bx-user"></i> Vos informations</h3>
+
+          <p class="payment-section">Informations personnelles</p>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Prénom</label>
+              <input type="text" id="prenom" placeholder="Jane" />
+            </div>
+            <div class="form-group">
+              <label>Nom</label>
+              <input type="text" id="nom" placeholder="juliet" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="email" placeholder="jane@gmail.com" />
+          </div>
+          <div class="form-group">
+            <label>Téléphone</label>
+            <input type="tel" id="telephone" placeholder="+213 7 00 00 00 00" />
+          </div>
+          <div class="form-group">
+            <label>Adresse de livraison</label>
+            <input
+              type="text"
+              id="adresse"
+              placeholder="123 Rue Didouche Mourad, Alger"
+            />
+          </div>
+
+          <div id="section-carte">
+            <div class="credit-card">
+              <img src="../image/credit-card.gif" alt="credit card" />
+            </div>
+            <div class="form-group">
+              <label>Numéro de carte</label>
+              <input
+                type="text"
+                id="carte-numero"
+                placeholder="1234 5678 9012 3456"
+                maxlength="19"
+                oninput="formatCard(this)"
+              />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Date d'expiration</label>
+                <input
+                  type="text"
+                  id="carte-exp"
+                  placeholder="MM/AA"
+                  maxlength="5"
+                  oninput="formatExp(this)"
+                />
+              </div>
+              <div class="form-group">
+                <label>CVV</label>
+                <input
+                  type="password"
+                  id="carte-cvv"
+                  placeholder="•••"
+                  maxlength="3"
+                />
+              </div>
+            </div>
+          </div>
+
+          <button
+            class="btn-confirmer"
+            id="btn-confirmer"
+            onclick="confirmerAchat()"
+          >
+            <i class="bx bx-check-shield"></i> Confirmer la commande
+          </button>
+          <div class="securite-badge">
+            <i class="bx bx-lock-alt"></i> Paiement sécurisé
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="modal-succes" id="modal-succes">
+      <div class="modal-succes-box">
+        <div class="modal-check"><i class="bx bx-check"></i></div>
+        <h2>Commande confirmée !</h2>
+        <p>
+          Merci pour votre confiance.<br />Votre commande a bien été
+          enregistrée.<br /><br />
+          Référence : <span class="modal-ref" id="modal-ref">#LC-00000</span>
+        </p>
+        <button class="btn-modal-ok" onclick="finaliserCommande()">
+          Retour à l'accueil
+        </button>
+      </div>
+    </div>
+    <footer>
+      <section class="footer">
+        <div class="footer-cnt">
+          <div class="footer-box">
+            <h2>VROOM<span> VROOM</span></h2>
+            <p>
+              Découvrez les voitures les plus luxueuses et performantes. Votre
+              destination pour le rêve automobile.
+            </p>
+          </div>
+          <div class="footer-box">
+            <h3>navigation</h3>
+            <ul>
+              <li><a href="../index.html">Accueil</a></li>
+              <li><a href="voitures.html">Voitures</a></li>
+              <li><a href="marques.html">Marques</a></li>
+              <li><a href="acheter.html">Acheter</a></li>
+            </ul>
+          </div>
+          <div class="footer-box">
+            <h3>contact</h3>
+            <a href="mailto:luxury-car@gmail.com"
+              >email : vroom-vroom@gmail.com</a
+            >
+            <a href="tel:+1234567890">tel : +1234567890</a>
+          </div>
+          <div class="footer-box">
+            <h3>suivez-nous</h3>
+            <div class="social">
+              <a href="https://www.instagram.com/"
+                ><i class="bx bxl-instagram" style="color: #e1306c"></i
+              ></a>
+              <a href="https://www.facebook.com/"
+                ><i class="bx bxl-facebook-circle" style="color: #1877f2"></i
+              ></a>
+              <a href="https://x.com/"
+                ><i class="bx bxl-twitter" style="color: #1da1f2"></i
+              ></a>
+              <a href="https://github.com/"><i class="bx bxl-github"></i></a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </footer>
+
+    <script src="../javascript/panier.js"></script>
+    <script src="../javascript/auth.js"></script>
+    <script src="../javascript/achat.js"></script>
+  </body>
+</html>

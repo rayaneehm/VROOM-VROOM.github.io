@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Voitures | VROOM VROOM</title>
+    <link rel="stylesheet" href="../style/style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="pages-body">
+    <div>
+      <header id="header">
+        <h2 class="logo">VROOM<span> VROOM </span></h2>
+        <nav>
+          <ul class="navbar">
+            <li>
+              <a href="../index.html"><i class="bx bx-home"></i> Accueil</a>
+            </li>
+            <li>
+              <a href="marques.html"><i class="bx bx-award"></i> Marques</a>
+            </li>
+            <li>
+              <a class="active" href="voitures.html"
+                ><i class="bx bx-car"></i> Voitures</a
+              >
+            </li>
+            <li>
+              <a href="acheter.html"
+                ><i class="bx bx-credit-card"></i> Acheter</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <a href="#" class="basket"><i class="bx bx-basket"></i></a>
+        <a href="#" class="menu"><i class="bx bx-menu"></i></a>
+        <a href="connexion.html" class="login-btn" id="account-btn"
+          >Connexion</a
+        >
+      </header>
+    </div>
+    <main class="voiture-body">
+      <h1 class="voiture-titre">Découvrez nos <span>voitures</span></h1>
+      <p class="voiture-txt">
+        Explorez notre collection de voitures de luxe et trouvez le modèle qui
+        correspond à vos besoins
+      </p>
+      <section class="filters">
+        <button class="filter-btn" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="sport">Sport</button>
+        <button class="filter-btn" data-filter="family">Family</button>
+        <button class="filter-btn" data-filter="suv">SUV</button>
+        <button class="filter-btn" data-filter="electric">Electric</button>
+      </section>
+      <section class="filters" id="brand-filters"></section>
+
+      <section class="feature-cards" id="cars-container"></section>
+
+      <div class="load-more-wrapper">
+        <button id="load-more-btn" class="filter-btn">Voir plus</button>
+      </div>
+    </main>
+
+    <footer>
+      <section class="footer">
+        <div class="footer-cnt">
+          <div class="footer-box">
+            <h2>VROOM<span> VROOM</span></h2>
+            <p>
+              Découvrez les voitures les plus luxueuses et performantes. Votre
+              destination pour le rêve automobile.
+            </p>
+          </div>
+
+          <div class="footer-box">
+            <h3>navigation</h3>
+            <ul>
+              <li><a href="../index.html">Accueil</a></li>
+              <li><a href="voitures.html">voitures</a></li>
+              <li><a href="marques.html">marques</a></li>
+              <li><a href="acheter.html">acheter</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-box">
+            <h3>contact</h3>
+            <a href="mailto:luxury-car@gmail.com"
+              >email : vroom-vroom@gmail.com</a
+            >
+            <a href="tel:+1234567890">tel : +1234567890</a>
+          </div>
+          <div class="footer-box">
+            <h3>suivez-nous</h3>
+            <div class="social">
+              <a href="https://www.instagram.com/"
+                ><i class="bx bxl-instagram" style="color: #e1306c"></i
+              ></a>
+              <a href="https://www.facebook.com/"
+                ><i class="bx bxl-facebook-circle" style="color: #1877f2"></i
+              ></a>
+              <a href="https://x.com/"
+                ><i class="bx bxl-twitter" style="color: #1da1f2"></i
+              ></a>
+              <a href="https://github.com/"><i class="bx bxl-github"></i></a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </footer>
+    <script src="../javascript/data.js"></script>
+    <script src="../javascript/panier.js"></script>
+    <script src="../javascript/auth.js"></script>
+    <script src="../javascript/script.js"></script>
+  </body>
+</html>

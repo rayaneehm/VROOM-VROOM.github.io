@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Connexion</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style/style.css" />
+  </head>
+  <body class="pages-body">
+    <header id="header">
+      <h2 class="logo">VROOM<span> VROOM </span></h2>
+      <nav>
+        <ul class="navbar">
+          <li>
+            <a href="../index.html"><i class="bx bx-home"></i> Accueil</a>
+          </li>
+          <li>
+            <a href="marques.html"><i class="bx bx-award"></i> Marques</a>
+          </li>
+          <li>
+            <a href="voitures.html"><i class="bx bx-car"></i> Voitures</a>
+          </li>
+          <li>
+            <a href="acheter.html"><i class="bx bx-credit-card"></i> Acheter</a>
+          </li>
+        </ul>
+      </nav>
+      <a href="#" class="menu"><i class="bx bx-menu"></i></a>
+      <a href="connexion.html" class="login-btn" id="account-btn">Connexion</a>
+    </header>
+
+    <div class="wrapped-body">
+      <div class="card" id="card">
+        <div class="slider">
+          <div class="slider-inner">
+            <div class="face show" id="faceLogin">
+              <h3>Bonjour !</h3>
+              <p>Pas encore de compte ? Rejoignez-nous, ça prend une minute.</p>
+              <button id="toRegister">S'inscrire</button>
+            </div>
+            <div class="face hide" id="faceRegister">
+              <h3>Bon retour !</h3>
+              <p>Vous avez déjà un compte ? Connectez-vous et continuez.</p>
+              <button id="toLogin">Se connecter</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel login-panel">
+          <h2>Se connecter</h2>
+          <p class="sub">Heureux de vous revoir</p>
+
+          <form id="login-form" action="#" autocomplete="off">
+            <div class="info-box">
+              <input
+                type="text"
+                id="email"
+                placeholder="username / email"
+                autocomplete="username"
+              />
+              <i class="bx bxs-user"></i>
+            </div>
+            <div class="info-box">
+              <input
+                type="password"
+                id="password"
+                placeholder="mot de passe"
+                autocomplete="current-password"
+              />
+              <i class="bx bxs-lock-alt"></i>
+            </div>
+            <div class="remember">
+              <label><input type="checkbox" /> se rappeler de moi</label>
+              <a href="#">mot de passe oublié ?</a>
+            </div>
+            <div class="connexion-btn">
+              <button type="button" onclick="login()">Se connecter</button>
+            </div>
+          </form>
+
+          <div class="or-divider">OU</div>
+          <div class="social">
+            <a href=""><i class="bx bxl-google"></i></a>
+            <a href=""><i class="bx bxl-facebook-circle"></i></a>
+            <a href=""><i class="bx bxl-github"></i></a>
+            <a href=""><i class="bx bxl-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="panel register-panel">
+          <h2>Créer un compte</h2>
+          <p class="sub">Rejoignez-nous, c'est gratuit</p>
+
+          <form id="signup-form" action="" autocomplete="off">
+            <div class="info-box">
+              <input
+                type="text"
+                id="username"
+                placeholder="username"
+                autocomplete="off"
+              />
+              <i class="bx bxs-user"></i>
+            </div>
+            <div class="info-box">
+              <input
+                type="email"
+                id="reg-email"
+                placeholder="email"
+                autocomplete="email"
+              />
+              <i class="bx bxs-envelope"></i>
+            </div>
+            <div class="info-box">
+              <input
+                type="password"
+                id="reg-pass"
+                placeholder="mot de passe"
+                autocomplete="new-password"
+              />
+              <i class="bx bxs-lock-alt"></i>
+            </div>
+            <div class="info-box">
+              <input
+                type="password"
+                id="confirm-password"
+                placeholder="confirmer le mot de passe"
+                autocomplete="new-password"
+              />
+              <i class="bx bxs-lock-check"></i>
+            </div>
+            <div class="connexion-btn">
+              <button type="button" onclick="signup()">Créer le compte</button>
+            </div>
+          </form>
+
+          <div class="or-divider">OU</div>
+          <div class="social">
+            <a href=""><i class="bx bxl-google"></i></a>
+            <a href=""><i class="bx bxl-facebook-circle"></i></a>
+            <a href=""><i class="bx bxl-github"></i></a>
+            <a href=""><i class="bx bxl-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../javascript/auth.js"></script>
+  </body>
+</html>

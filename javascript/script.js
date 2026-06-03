@@ -5,8 +5,18 @@ const loadMoreBtn = document.getElementById("load-more-btn");
 
 let selectedType = "all";
 let selectedBrand = "all";
-let visibleCars = 10;
-const step = 10;
+let visibleCars = 12;
+const step = 12;
+
+const params = new URLSearchParams(window.location.search);
+const brandFromURL = params.get("brand");
+const typeFromURL = params.get("type");
+if (brandFromURL) {
+  selectedBrand = brandFromURL;
+}
+if (typeFromURL) {
+  selectedType = typeFromURL;
+}
 
 function formatTypes(type) {
   return Array.isArray(type) ? type.join(" / ") : type;
@@ -23,7 +33,9 @@ function createCarCard(car) {
       </div>
       <div class="car-bottom">
         <p>${car.price} $</p>
-        <a href="reservation.html" class="car-btn">reserver</a>
+        <button class="car-btn" onclick="ajouterAuPanier(${car.id}, '${car.name}', ${car.price}, '${car.image}')">
+          réserver
+        </button>
       </div>
     </div>
   `;
@@ -37,8 +49,7 @@ function getFilteredCars() {
         ? car.type.includes(selectedType)
         : car.type === selectedType);
 
-    const matchBrand =
-      selectedBrand === "all" || car.brand === selectedBrand;
+    const matchBrand = selectedBrand === "all" || car.brand === selectedBrand;
 
     return matchType && matchBrand;
   });
@@ -83,7 +94,7 @@ function renderBrandFilters() {
           <button class="filter-btn brand-btn ${selectedBrand === brand ? "active" : ""}" data-brand="${brand}">
             ${brand}
           </button>
-        `
+        `,
       )
       .join("")}
   `;
@@ -93,7 +104,7 @@ function renderBrandFilters() {
   brandButtons.forEach((button) => {
     button.addEventListener("click", () => {
       selectedBrand = button.dataset.brand;
-      visibleCars = 10;
+      visibleCars = 12;
       renderBrandFilters();
       displayCars();
     });
@@ -103,7 +114,7 @@ function renderBrandFilters() {
 typeButtons.forEach((button) => {
   button.addEventListener("click", () => {
     selectedType = button.dataset.filter;
-    visibleCars = 10;
+    visibleCars = 12;
     setActiveTypeButton();
     displayCars();
   });
