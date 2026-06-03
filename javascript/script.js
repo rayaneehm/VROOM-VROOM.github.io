@@ -34,7 +34,7 @@ function createCarCard(car) {
       <div class="car-bottom">
         <p>${car.price} $</p>
         <button class="car-btn" onclick="ajouterAuPanier(${car.id}, '${car.name}', ${car.price}, '${car.image}')">
-          réserver
+          ajouter au panier
         </button>
       </div>
     </div>
