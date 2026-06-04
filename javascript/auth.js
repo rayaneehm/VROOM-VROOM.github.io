@@ -12,7 +12,8 @@ if (!localStorage.getItem("listeUtilisateurs")) {
 }
 function login() {
   const emailSaisi = document.getElementById("email").value.trim();
-  const passwordSaisi = document.getElementById("password").value.trim();
+  const passwordSaisi = document.getElementById("password").value; // ✅ trim() retiré
+
   if (!emailSaisi || !passwordSaisi) {
     afficherMessage(
       "Veuillez remplir tous les champs.",
@@ -45,12 +46,20 @@ function login() {
 function signup() {
   const usernameSaisi = document.getElementById("username").value.trim();
   const emailSaisi = document.getElementById("reg-email").value.trim();
-  const passwordSaisi = document.getElementById("reg-pass").value.trim();
-  const confirmSaisi = document.getElementById("confirm-password").value.trim();
+  const passwordSaisi = document.getElementById("reg-pass").value;
+  const confirmSaisi = document.getElementById("confirm-password").value;
 
   if (!usernameSaisi || !emailSaisi || !passwordSaisi || !confirmSaisi) {
     afficherMessage(
       "Veuillez remplir tous les champs.",
+      "erreur",
+      "signup-form",
+    );
+    return;
+  }
+  if (!emailSaisi.includes("@") || !emailSaisi.includes(".")) {
+    afficherMessage(
+      "Veuillez entrer un email valide.",
       "erreur",
       "signup-form",
     );
@@ -96,7 +105,6 @@ function signup() {
     afficherMessage("Cet email est déjà utilisé.", "erreur", "signup-form");
     return;
   }
-
   users.push({
     username: usernameSaisi,
     email: emailSaisi,
@@ -108,6 +116,7 @@ function signup() {
     "succes",
     "signup-form",
   );
+
   setTimeout(function () {
     const card = document.getElementById("card");
     if (card) {
@@ -128,6 +137,7 @@ function logout() {
     window.location.href = "content/connexion.html";
   }
 }
+
 function getUtilisateurConnecte() {
   return localStorage.getItem("utilisateurConnecte");
 }
@@ -142,7 +152,6 @@ function afficherMessage(texte, type, formId) {
   message.style.marginTop = "10px";
   message.style.fontWeight = "bold";
   message.style.fontSize = "13px";
-
   const formulaire = document.getElementById(formId || "login-form");
   if (formulaire) formulaire.appendChild(message);
 }
