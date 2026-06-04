@@ -147,9 +147,18 @@ window.addEventListener("DOMContentLoaded", function () {
     if (loginBtn && !navbar.querySelector(".nav-login")) {
       const clone = document.createElement("a");
       clone.className = "nav-login";
-      clone.href = loginBtn.href;
-      clone.innerHTML =
-        "<i class='bx bx-log-in'></i> " + loginBtn.textContent.trim();
+      clone.href = "#";
+      const utilisateurConnecte = getUtilisateurConnecte();
+      if (utilisateurConnecte) {
+        clone.innerHTML = "<i class='bx bx-log-out'></i> Se déconnecter";
+        clone.addEventListener("click", function (e) {
+          e.preventDefault();
+          logout();
+        });
+      } else {
+        clone.href = loginBtn.href;
+        clone.innerHTML = "<i class='bx bx-log-in'></i> Connexion";
+      }
       const li = document.createElement("li");
       li.className = "nav-login-item";
       li.appendChild(clone);
@@ -165,7 +174,6 @@ window.addEventListener("DOMContentLoaded", function () {
           : "bx bx-menu";
       }
     });
-
     navbar.querySelectorAll("a").forEach(function (link) {
       link.addEventListener("click", function () {
         navbar.classList.remove("nav-open");
