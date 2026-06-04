@@ -5,25 +5,36 @@ const usersParDefaut = [
     password: "Admin@2024!",
   },
 ];
-let users = JSON.parse(localStorage.getItem("listeUtilisateurs")) || usersParDefaut;
+let users =
+  JSON.parse(localStorage.getItem("listeUtilisateurs")) || usersParDefaut;
 if (!localStorage.getItem("listeUtilisateurs")) {
   localStorage.setItem("listeUtilisateurs", JSON.stringify(users));
 }
 function login() {
-  const emailSaisi    = document.getElementById("email").value.trim();
+  const emailSaisi = document.getElementById("email").value.trim();
   const passwordSaisi = document.getElementById("password").value.trim();
   if (!emailSaisi || !passwordSaisi) {
-    afficherMessage("Veuillez remplir tous les champs.", "erreur", "login-form");
+    afficherMessage(
+      "Veuillez remplir tous les champs.",
+      "erreur",
+      "login-form",
+    );
     return;
   }
   const userTrouve = users.find(function (u) {
-    return (u.email === emailSaisi || u.username === emailSaisi) &&
-           u.password === passwordSaisi;
+    return (
+      (u.email === emailSaisi || u.username === emailSaisi) &&
+      u.password === passwordSaisi
+    );
   });
 
   if (userTrouve) {
     localStorage.setItem("utilisateurConnecte", userTrouve.username);
-    afficherMessage("Connexion réussie ! Bienvenue " + userTrouve.username, "succes", "login-form");
+    afficherMessage(
+      "Connexion réussie ! Bienvenue " + userTrouve.username,
+      "succes",
+      "login-form",
+    );
     setTimeout(function () {
       window.location.href = "../index.html";
     }, 1500);
@@ -33,47 +44,77 @@ function login() {
 }
 function signup() {
   const usernameSaisi = document.getElementById("username").value.trim();
-  const emailSaisi    = document.getElementById("reg-email").value.trim();
+  const emailSaisi = document.getElementById("reg-email").value.trim();
   const passwordSaisi = document.getElementById("reg-pass").value.trim();
-  const confirmSaisi  = document.getElementById("confirm-password").value.trim();
+  const confirmSaisi = document.getElementById("confirm-password").value.trim();
 
   if (!usernameSaisi || !emailSaisi || !passwordSaisi || !confirmSaisi) {
-    afficherMessage("Veuillez remplir tous les champs.", "erreur", "signup-form");
+    afficherMessage(
+      "Veuillez remplir tous les champs.",
+      "erreur",
+      "signup-form",
+    );
     return;
   }
   if (passwordSaisi.length < 8) {
-    afficherMessage("Le mot de passe doit contenir au moins 8 caractères.", "erreur", "signup-form");
+    afficherMessage(
+      "Le mot de passe doit contenir au moins 8 caractères.",
+      "erreur",
+      "signup-form",
+    );
     return;
   }
   if (!/[A-Z]/.test(passwordSaisi)) {
-    afficherMessage("Le mot de passe doit contenir au moins une majuscule.", "erreur", "signup-form");
+    afficherMessage(
+      "Le mot de passe doit contenir au moins une majuscule.",
+      "erreur",
+      "signup-form",
+    );
     return;
   }
   if (!/[0-9]/.test(passwordSaisi)) {
-    afficherMessage("Le mot de passe doit contenir au moins un chiffre.", "erreur", "signup-form");
+    afficherMessage(
+      "Le mot de passe doit contenir au moins un chiffre.",
+      "erreur",
+      "signup-form",
+    );
     return;
   }
   if (passwordSaisi !== confirmSaisi) {
-    afficherMessage("Les mots de passe ne correspondent pas.", "erreur", "signup-form");
+    afficherMessage(
+      "Les mots de passe ne correspondent pas.",
+      "erreur",
+      "signup-form",
+    );
     return;
   }
 
-  const emailExiste = users.find(function (u) { return u.email === emailSaisi; });
+  const emailExiste = users.find(function (u) {
+    return u.email === emailSaisi;
+  });
   if (emailExiste) {
     afficherMessage("Cet email est déjà utilisé.", "erreur", "signup-form");
     return;
   }
 
-  users.push({ username: usernameSaisi, email: emailSaisi, password: passwordSaisi });
+  users.push({
+    username: usernameSaisi,
+    email: emailSaisi,
+    password: passwordSaisi,
+  });
   localStorage.setItem("listeUtilisateurs", JSON.stringify(users));
-  afficherMessage("Compte créé ! Vous pouvez maintenant vous connecter.", "succes", "signup-form");
+  afficherMessage(
+    "Compte créé ! Vous pouvez maintenant vous connecter.",
+    "succes",
+    "signup-form",
+  );
   setTimeout(function () {
     const card = document.getElementById("card");
     if (card) {
       card.classList.remove("active");
-      const faceLogin    = document.getElementById("faceLogin");
+      const faceLogin = document.getElementById("faceLogin");
       const faceRegister = document.getElementById("faceRegister");
-      if (faceLogin)    faceLogin.classList.replace("hide", "show");
+      if (faceLogin) faceLogin.classList.replace("hide", "show");
       if (faceRegister) faceRegister.classList.replace("show", "hide");
     }
   }, 1800);
@@ -96,21 +137,21 @@ function afficherMessage(texte, type, formId) {
   const message = document.createElement("p");
   message.id = "message-auth";
   message.textContent = texte;
-  message.style.color      = type === "succes" ? "#2dc653" : "#e63946";
-  message.style.textAlign  = "center";
-  message.style.marginTop  = "10px";
+  message.style.color = type === "succes" ? "#2dc653" : "#e63946";
+  message.style.textAlign = "center";
+  message.style.marginTop = "10px";
   message.style.fontWeight = "bold";
-  message.style.fontSize   = "13px";
+  message.style.fontSize = "13px";
 
   const formulaire = document.getElementById(formId || "login-form");
   if (formulaire) formulaire.appendChild(message);
 }
 window.addEventListener("DOMContentLoaded", function () {
-  const card         = document.getElementById("card");
-  const faceLogin    = document.getElementById("faceLogin");
+  const card = document.getElementById("card");
+  const faceLogin = document.getElementById("faceLogin");
   const faceRegister = document.getElementById("faceRegister");
-  const toRegister   = document.getElementById("toRegister");
-  const toLogin      = document.getElementById("toLogin");
+  const toRegister = document.getElementById("toRegister");
+  const toLogin = document.getElementById("toLogin");
   if (toRegister) {
     toRegister.addEventListener("click", function () {
       card.classList.add("active");
@@ -126,10 +167,13 @@ window.addEventListener("DOMContentLoaded", function () {
     });
   }
   const boutonCompte = document.getElementById("account-btn");
-  const utilisateur  = getUtilisateurConnecte();
+  const utilisateur = getUtilisateurConnecte();
   if (boutonCompte && utilisateur) {
-    boutonCompte.innerHTML = "<i class='bx bxs-user-circle'></i> " + utilisateur;
+    boutonCompte.innerHTML =
+      "<i class='bx bxs-user-circle'></i> " + utilisateur;
     boutonCompte.href = "#";
-    boutonCompte.addEventListener("click", function () { logout(); });
+    boutonCompte.addEventListener("click", function () {
+      logout();
+    });
   }
 });
