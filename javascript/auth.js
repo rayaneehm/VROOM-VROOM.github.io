@@ -12,7 +12,7 @@ if (!localStorage.getItem("listeUtilisateurs")) {
 }
 function login() {
   const emailSaisi = document.getElementById("email").value.trim();
-  const passwordSaisi = document.getElementById("password").value; // ✅ trim() retiré
+  const passwordSaisi = document.getElementById("password").value;
 
   if (!emailSaisi || !passwordSaisi) {
     afficherMessage(
